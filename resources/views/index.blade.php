@@ -16,5 +16,11 @@
         </div>
         @livewireScripts
         <script src="{{asset('js/app.js')}}"></script>
+        <script>
+            // Echo.channel('chat')
+            // .listen('MessageSent', (e) => {
+            //     console.log(e.message);
+            // })
+        </script>
     </body>
 </html>

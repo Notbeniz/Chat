@@ -10,8 +10,9 @@ use Livewire\Component;
 
 class Chat extends Component
 {
-    public $message, $sender, $reciever, $user_id, $users;
+    public $message, $sender, $reciever, $user_id, $usersn ,$msgData;
 
+    public $listeners = ['echo:chat,MessageSent' => 'render'];
 
     public function mount(){
         $this->user = User::find($this->user_id);
@@ -28,10 +29,11 @@ class Chat extends Component
         ]);
 
         broadcast(new MessageSent(auth()->user(), $message));
+        $this->emitSelf('testFunc');
 
         $this->message = '';
     }
-    
+
     public function chaneUser($user_id)
     {
         // dd($user_id);
@@ -45,7 +47,7 @@ class Chat extends Component
                 $query->where('sender_id', Auth::user()->id)->where('reciever_id', $this->user_id);
             })->orWhere(function ($query) {
                 $query->where('sender_id', $this->user_id)->where('reciever_id', Auth::user()->id);
-            })->orderBy('created_at', 'ASC')->limit(10)->get()
+            })->get()
         ]);
     }
 }

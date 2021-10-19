@@ -11,7 +11,7 @@
         @if (! is_null($user_id))
             
             <div>
-                <input wire:model="message" class="form-control" placeholder="Type your message here...">
+                <input wire:model.lazy="message" class="form-control" placeholder="Type your message here...">
                 <div class="text-center mt-3">
                     <button class="btn btn-info" wire:click.prevent="sendMSG" >Send</button>
                 </div>  
