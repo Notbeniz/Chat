@@ -12,7 +12,7 @@ class Chat extends Component
 {
     public $message, $sender, $reciever, $user_id, $usersn ,$msgData;
 
-    public $listeners = ['echo:chat,MessageSent' => 'render'];
+    public $listeners = ['echo:chat,MessageSent' => 'render', 'changeUser'];
 
     public function mount(){
         $this->user = User::find($this->user_id);
@@ -34,9 +34,8 @@ class Chat extends Component
         $this->message = '';
     }
 
-    public function chaneUser($user_id)
+    public function changeUser($user_id)
     {
-        // dd($user_id);
         $this->user_id = $user_id;
     }
 

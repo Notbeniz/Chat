@@ -4,21 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
-        {{-- <link rel="stylesheet" href="{{asset('css/master.css')}}"> --}}
+        <link rel="stylesheet" href="{{asset('css/master.css')}}">
         @livewireStyles
         <title>Chat</title>
     </head>
     <body>
         <div class="container-fluid">
           <x-layouts.header />
-           <div class="row">
-            <div class="col-9">
-                
+          <div class="row main">
+            <div class="d-none d-sm-block col-sm-3 user-list">
+                @livewire('user-list')
             </div>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-9 content">
                 {{$slot}}
             </div>
-           </div>
+          </div>
         </div>
         <script src="{{asset('js/app.js')}}"></script>
         @livewireScripts
